@@ -4,7 +4,7 @@ Mano manim scriptai, kurių **turėtu** palengvinti animacijų kūrimą.
   
 Instaliacija:  
   
-$ pip install virtualenv  
+``$ pip install virtualenv ``
 
 $ python -m venv ./venv venv  
 
