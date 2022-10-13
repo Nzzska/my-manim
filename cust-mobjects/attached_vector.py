@@ -12,6 +12,7 @@ class ObjectDescription:
         self._name = name
         self._position = mobject.get_center()
         self._direction = direction
+        self._vector = self.create_vector(**kwargs)
 
     @property
     def direction(self) -> np.ndarray:
@@ -39,8 +40,12 @@ class ObjectDescription:
 
     ########
     @property
-    def vector(self, **kwargs):
-        return self.create_vector(**kwargs)
+    def vector(self, **kwargs) -> Arrow:
+        return self._vector
+
+    @vector.setter
+    def vector(self, new_vector):
+        self._vector = new_vector
     ########
 
     def create_vector(self, **kwargs) -> Arrow:
@@ -49,6 +54,13 @@ class ObjectDescription:
             end=self._position + self._direction,
             buff=0,
             **kwargs
+        )
+
+    def update_instance(self, new_dir, **kwargs):
+        self._position = self._mobject.get_center()
+        self._direction = new_dir
+        self._vector.become(
+            self.create_vector(**kwargs)
         )
 
     def __str__(self) -> str:
