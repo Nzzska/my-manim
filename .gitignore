@@ -129,6 +129,9 @@ dmypy.json
 .pyre/
 
 # Manim
-
+media
 .media
 ./media
+
+#sandbox
+test.py
